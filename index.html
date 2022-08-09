@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+
+
+body{
+
+    background-color: rgb(129, 245, 245);
+}
+
+.card {
+
+    background-color:lightpink
+    border-radius: 10px;
+}
+
+      .card-body input{
+
+        background-color:white;
+        height: 50px;
+        font-size: 30px;
+        font-weight: bold;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-radius: 5px;
+
+
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+      }
+      .card-body input:focus{
+
+        outline: none;
+      }
+
+      .text-right{
+
+        text-align: right;
+
+
+      }
+
+ /* th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+} */
+
+button{
+
+    height: 50%;
+    width: 60%;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-style: groove;
+    background-color:blueviolet;
+    border-radius: 50%;
+    color: white;
+    
+}
+
+    </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+
+
+        <div class="container-fluid">
+            <div class="row">
+
+            
+            <div class="card shadow  col-lg-4 col-md-4 m-auto mt-5">
+                <div class="card-header text-center"><h2>Calculator</h2></div>
+                <div class="card-body">
+                    <div class="row">
+
+                    
+
+                    <input class="from-control col-lg-12 input text-right" id="append" type="text" id="value" required />
+
+                </div>
+                    <br>
+                    <div class="row">
+                    <table class="table col-lg-12">
+                        <tr>
+                            <td>
+                                <button  value="1" type="button">1</button>
+                            </td>
+                            <td>
+                                <button value="2" type="button">2</button>
+                            </td>
+                            <td>
+                                <button  value="3" type="button">3</button>
+                            </td>
+                            <td>
+                                <button  value="+" type="button">+</button>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <button value="4" type="button">4</button>
+                            </td>
+                            <td>
+                                <button value="5" type="button">5</button>
+                            </td>
+                            <td>
+                                <button value="6" type="button">6</button>
+                            </td>
+                            <td>
+                                <button value="-" type="button">-</button>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <button value="7" type="button">7</button>
+                            </td>
+                            <td>
+                                <button value="8" type="button">8</button>
+                            </td>
+                            <td>
+                                <button value="9" type="button">9</button>
+                            </td>
+                            <td>
+                                <button value="*" type="button">*</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button value="C" type="button">C</button>
+                            </td>
+                            <td>
+                                <button value="0" type="button">0</button>
+                            </td>
+                            <td>
+                                <button value="Cal" type="button">=</button>
+                            </td>
+                            <td>
+                                <button value="/" type="button">/</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                </div>
+
+
+
+
+                
+
+            </div>
+
+        </div>
+
+        </div>
+        <script>
+//function for fetching the javascrip
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                const clicked = button.value;
+                // var total=document.getElementById("append").value+clicked;
+                // document.getElementById("append").value=total;
+                check(clicked);
+
+
+                function check(clicked){
+
+                    if(clicked=="C"){
+
+                        document.getElementById("append").value="";
+
+
+                    }
+                    else if(clicked=="Cal"){
+                    var total=document.getElementById("append").value;
+                    document.getElementById("append").value=total;
+
+                    Calculate(total);
+
+
+                    }
+
+                  
+                    else{
+
+
+
+                        
+                total=document.getElementById("append").value+clicked;
+                document.getElementById("append").value=total;
+
+
+                    }
+
+
+
+                }
+
+
+                function Calculate(total){
+
+
+                    
+                const numbers = total.split(/\D/g);
+                const op = total.split(/\d/g).filter(Boolean);
+
+                console.log(numbers)
+
+                if(op=="+")
+                {
+                    let t=0;
+                    for(let i=0;i<=numbers.length-1;i++){
+
+                        t += parseInt(numbers[i]);
+                       
+
+                       
+                    }
+
+                    document.getElementById("append").value=t;
+
+                    //alert("Buddy u are closer")
+
+                    // var t=sum(numbers);
+                    // console.log(t)
+
+                    console.log(numbers)
+                }
+
+                else if(op=="-")
+                {
+                    let t=numbers[0];
+                    for(let i=1;i<=numbers.length-1;i++){
+
+                        t -= parseInt(numbers[i]);
+                       
+
+                       
+                    }
+
+                    document.getElementById("append").value=t;
+
+                    //alert("Buddy u are closer")
+
+                    // var t=sum(numbers);
+                    // console.log(t)
+
+                    console.log(numbers)
+                }
+                else if(op=="*")
+                {
+                    let t=1;
+                    for(let i=0;i<=numbers.length-1;i++){
+
+                        t *= parseInt(numbers[i]);
+                       
+
+                       
+                    }
+
+                    document.getElementById("append").value=t;
+
+                    //alert("Buddy u are closer")
+
+                    // var t=sum(numbers);
+                    // console.log(t)
+
+                    console.log(numbers)
+                }
+                else
+                {
+                    let t=numbers[0];
+                    for(let i=1;i<=numbers.length-1;i++){
+
+                        t /= parseInt(numbers[i]);
+                       
+
+                       
+                    }
+
+                    document.getElementById("append").value=t;
+
+                    //alert("Buddy u are closer")
+
+                    // var t=sum(numbers);
+                    // console.log(t)
+
+                    console.log(numbers)
+                }
+                
+
+            
+
+            
+                   // alert("Im workign fine buddy")
+
+
+
+
+
+
+
+                }
+
+
+                    // function Check(total){
+
+                    //     console.log("im calculate")
+
+
+
+                    // }
+
+
+
+
+                // if(clicked=="=")
+                // {
+
+
+                // document.getElementById("append").value=total;
+
+                // const numbers = total.split(/\D/g);
+                // const op = total.split(/\d/g).filter(Boolean);
+                // //cacluate function 
+                // calculate(numbers,op);
+
+                // //extract operator and based on the operator 
+
+
+                // }
+
+                // function calculate(numbers,op){
+
+                //     console.log("im function",numbers,op)
+                // }
+
+
+
+
+
+
+              
+                
+
+                // console.log(numbers)
+                // console.log(op)
+
+                function Done(){ 
+
+                    alert("im workig fine")
+                 }
+
+            
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // let operands =['+','-','*','/']
+
+            // for(let i=0; i<=length.total;i++){
+
+            //     if(operands.includes(total[i])){
+
+
+            //     }
+            // }
+
+
+
+
+
+
+                
+
+
+
+
+
+                 
+                
+            });
+        });
+
+
+        
+
+
+
+        </script>
+    </body>
+</html>
